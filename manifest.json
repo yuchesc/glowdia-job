@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Glowdia Job",
   "description": "This extension supports to input multiple daily works at once with JSON text at the TBS Glowdia work management site.",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "icons": {
     "16": "image/icon/16.png",
     "64": "image/icon/64.png",

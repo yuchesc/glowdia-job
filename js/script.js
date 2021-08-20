@@ -17,6 +17,7 @@ genres['非減算不就業'] = '09';
 let defaultPlace;
 const defaultProject = 'その他';
 const defaultGenre = workLabel;
+let genre = defaultGenre;
 
 const waitTime = 1000;
 
@@ -58,7 +59,7 @@ function parseWorkContent(text) {
         place = content.slice(content.indexOf('@') + 1);
         content = content.slice(0, content.indexOf('@'));
     }
-    return {project: project, content: content, genre: defaultGenre, place: place};
+    return {project: project, content: content, genre: genre, place: place};
 }
 
 function copyWork(work, start, end) {
@@ -94,6 +95,15 @@ function parseJson(text) {
     json.restStart = adjustTime(json.restStart);
     json.restEnd = adjustTime(json.restEnd);
     defaultPlace = json.place;
+    if (json.work) {
+        if (genres[json.work]) {
+            genre = json.work;
+        } else {
+            throw `Invalid key: ${json.work}`;
+        }
+    } else {
+        genre = defaultGenre;
+    }
     return json;
 }
 
